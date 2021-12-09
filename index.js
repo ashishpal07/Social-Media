@@ -7,6 +7,16 @@ const app = express();
 // define port
 const port = 8000;
 
+
+
+
+
+// use express router 
+app.use('/', require('./routes/index'));
+
+
+
+
 // listen the express (check if connected or not)
 app.listen(port, function(err){
     if(err){
