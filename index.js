@@ -21,8 +21,14 @@ const port = 8000;
 // we have to tell where to look for static files
 app.use(express.static('./assets'));
 
+// for cookie
+const cookieParser = require('cookie-parser');
 
+// reding from post reqest
+app.use(express.urlencoded());
 
+// to use cookie parser
+app.use(cookieParser());
 
 
 
