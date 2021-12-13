@@ -12,11 +12,16 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
+const db = require('./config/mongoose'); // to see db is running or not
+const user = require('./models/user');   // use to fetch database
+
 // define port
 const port = 8000;
 
 // we have to tell where to look for static files
 app.use(express.static('./assets'));
+
+
 
 
 
