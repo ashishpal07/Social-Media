@@ -1,9 +1,25 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req, res){
-    return res.render('users', {
-        title: "Profile"
-    });
+    // return res.render('users', {
+    //     title: "Profile"
+    // });
+    if(req.cookies.user_id){
+        console.log("hi", req.cookies.user_id);
+        User.findById(req.cookies.user_id, function(err, user){
+            console.log(user);
+            if(user){
+                return res.render('users', {
+                    title: "user-profile",
+                    user: user,
+                });
+            }else{
+            return res.redirect('/users/sign-in');
+            }
+        });
+    }else{
+        return res.redirect('/users/sign-in');
+    }
 };
 
 
