@@ -1,0 +1,33 @@
+footer{
+    margin-top: 80%;
+    display: flex;
+    background-color: grey;
+    padding: 10px;
+
+    #copyright{
+        // border: 1px solid black;
+        
+        span{
+            font-family: sans-serif;
+            font-size: 1rem;
+            color: white;
+        }
+
+    }
+
+    #links{
+        // border: 1px solid black;
+        margin-left: 20px;
+        margin-top: 0;
+        p{
+            margin-top: 0;
+            font-family: sans-serif;
+            font-size: 1rem;
+            
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}

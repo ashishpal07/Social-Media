@@ -1,0 +1,35 @@
+
+header{
+    margin: 0;
+    ul{
+        margin: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: sans-serif;
+        background-color: rgb(14, 103, 133);
+
+        #user-exist{
+            display: flex;
+            justify-content: space-between;
+
+            li{
+            margin-left: 10px;
+            margin-right: 5px;
+            
+                a{
+                    text-decoration: none;
+                    color: white;
+                    font-size: 1rem;
+                }
+
+            }
+
+        }
+
+    }
+
+}
