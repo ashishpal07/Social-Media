@@ -1,11 +1,12 @@
 footer{
     margin-top: 80%;
+    // height: 100%;
     display: flex;
     background-color: grey;
     padding: 10px;
+    // border: 1px solid blue;
 
     #copyright{
-        // border: 1px solid black;
         
         span{
             font-family: sans-serif;
@@ -16,7 +17,6 @@ footer{
     }
 
     #links{
-        // border: 1px solid black;
         margin-left: 20px;
         margin-top: 0;
         p{
