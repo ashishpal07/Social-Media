@@ -19,6 +19,8 @@ const db = require('./config/mongoose'); // to see db is running or not
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
+
 
 // define port
 const port = 8000;
@@ -26,10 +28,18 @@ const port = 8000;
 // we have to tell where to look for static files
 app.use(express.static('./assets'));
 
+// make the uploads path available to the browser
+app.use('/users/profile/uploads', express.static(__dirname + '/uploads'));
+
+
 // for cookie
 const cookieParser = require('cookie-parser');
 
 const MongoStore = require('connect-mongo');
+
+const flash = require('connect-flash');
+
+const customWare = require('./config/middleware');
 
 // const sassMiddleware = require('node-sass-middleware');
 
@@ -77,6 +87,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+app.use(flash());
+app.use(customWare.setFlash);
 
 // use express router 
 app.use('/', require('./routes/index'));
