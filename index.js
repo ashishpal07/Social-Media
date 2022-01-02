@@ -21,6 +21,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 
+const passporGoogle = require('./config/passport-google-oauth2-stretagy');
+
 
 // define port
 const port = 8000;
