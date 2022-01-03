@@ -49,6 +49,7 @@ module.exports.update = async function(req, res){
         }
 
     }else{
+        req.flash('error', 'Unauthorized!');
         return res.status(401).send('Unauthorized');
     }
 }
@@ -83,6 +84,7 @@ module.exports.create = function(req, res){
 
     // check pass and conf_pass of user
     if(req.body.password != req.body.confirm_password){
+        req.flash('error', 'Passwords do not match');
         return res.redirect('back');
     }
 
@@ -91,19 +93,20 @@ module.exports.create = function(req, res){
     // we have to create that user
     User.findOne({email: req.body.email}, function(err, user){
         if(err){
-            console.log("error while finding user singing up");
+            req.flash('error', err);
             return;        
         }
         // if user is not exist then insert into database
         if(!user){
             User.create(req.body, function(err, user){
                 if(err){
-                    console.log("error while creating user");
+                    req.flash('error', err);
                     return;
                 }
                 return res.redirect('/users/sign-in/');
             })
         }else{
+            req.flash('success', 'You have signed up, login to continue!');
             return res.redirect('back');
         }
     })

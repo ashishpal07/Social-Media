@@ -14,9 +14,21 @@
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
+
+                    // call the create comment class
+                    new PostComments(data.data.post._id);
+
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post published!",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
                 },
                 error: function(error){
-                    console.log(err.responsrText);
+                    console.log(err.responseText);
                 }
             });
         });
@@ -40,10 +52,10 @@
                 
                     <div class="post-comments">
                         
-                            <form action="/comments/create" method="Post">
+                            <form id="post-${ post._id }-comments-form" action="/comments/create" method="POST">
                                 <input type="text" name="content" placeholder="add comment..." required>
                                 <input type="hidden" name="post" value="${ post._id }">
-                                <input type="submit" value="add comment">
+                                <input type="submit" value="Add Comment">
                             </form>
                         
                 
@@ -55,7 +67,7 @@
                 
                     </div>
                 
-                </li>`);
+                </li>`)
     }
 
     // Method to delete the post from DOm
@@ -68,9 +80,17 @@
                 url: $(deleteLink).prop('href'),
                 success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Deleted",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
                 },
                 error: function(error){
-                    console.log(error.responsrText);
+                    console.log(error.responseText);
                 }
 
             });

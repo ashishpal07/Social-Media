@@ -48,13 +48,13 @@ module.exports.destroy = async function(req, res){
                 });
             }
 
-            req.flash('success', 'Post and Comment Deleted');
+            req.flash('success', 'Post and associated Comment Deleted');
 
             return res.redirect('back');
             
         }else{
             req.flash('error', 'You can not delete this post!');
-            console.log("error while deleting post", err);
+            // console.log("error while deleting post", err);
             return res.redirect('back');
         }
     }catch(err){
