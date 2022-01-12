@@ -18,6 +18,8 @@ router.use('/comments', require('./comments'));
 
 router.use('/api', require('./api'));
 
+router.use('/likes', require('./likes'));
+
 // router.use('/api', require('./api'));
 
 // for any further routes excess from here
